@@ -3,6 +3,7 @@
     <h1>Sorting Visualizer</h1>
     <button @click="bubbleSort()">Bubble Sort</button>
     <button @click="insertionSort()">Insertion Sort</button>
+    <button @click="selectionSort()">Selection Sort</button>
     <button @click="fillArray()">Shuffle</button>
 
     <div class="container">
@@ -28,7 +29,7 @@ export default {
       // populate array with random numbers between 5 and 400
       this.array = [];
       for (let i =0; i< this.size; i++) {
-        this.array.push([this.getRndInteger(5, 400),'lightseagreen'])
+        this.array.push([this.getRndInteger(5, 400),'grey'])
         this.numArray.push(this.array[i][0])
       }
       console.log(this.numArray)
@@ -49,7 +50,7 @@ export default {
             this.array[i+1][0] = tmp;
             this.array[i+1][1] = 'green';
             // sleep - to visualize / see the changes
-            await this.sleep()
+            await this.sleep(25)
             
             this.array[i+1][1] = 'lightseagreen';
 
@@ -67,7 +68,7 @@ export default {
         while(j >= 0 && this.array[j][0] > key){
           this.array[j+1][1] = 'green'
           this.array[j][1] = 'green'
-          await this.sleep()
+          await this.sleep(10)
           this.array[j + 1][0] = this.array[j][0];
           this.array[j+1][1] = 'lightseagreen'
           this.array[j][1] = 'lightseagreen'
@@ -77,8 +78,30 @@ export default {
         this.array[j + 1][0] = key;
       }
     },
-    sleep() {
-      return new Promise((resolve) => setTimeout(resolve, 50));
+    async selectionSort(){
+      for(var i = 0; i < this.size; i++){
+        var min = i; 
+        for(var j = i+1; j < this.size; j++){
+          if(this.array[j][0] < this.array[min][0]){
+          // update the smallest index
+            min = j; 
+          }
+        }
+        var tmp = this.array[i][0];
+        this.array[i][1] = 'green'
+        this.array[min][1] = 'red'
+        await this.sleep(300)
+        this.array[i][0] = this.array[min][0];
+        this.array[min][0] = tmp;
+        this.array[i][1] = 'red'
+        this.array[min][1] = 'green'
+        await this.sleep(300)
+        this.array[i][1] = 'grey'
+        this.array[min][1] = 'grey'
+      }
+    },
+    sleep(time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
     },
   },
   created() {
