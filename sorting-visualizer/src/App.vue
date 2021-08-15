@@ -1,10 +1,11 @@
 <template>
   <div>
     <h1>Sorting Visualizer</h1>
-    <button @click="bubbleSort()">Bubble Sort</button>
-    <button @click="fillArray()">Shuffle</button>
-    <button @click="mergeSort()">Merge Sort</button>
-
+    <div class="buttons-container">
+      <button @click="bubbleSort()">Bubble Sort</button>
+      <button @click="fillArray()">Shuffle</button>
+      <button @click="mergeSort()">Merge Sort</button>
+    </div>
     <div class="container">
       <div class="bar" v-for="(number,index) in array" :key="index" :style="{height: number[0] + 'px',backgroundColor:number[1]}"></div>
     </div>
@@ -104,7 +105,17 @@ export default {
   margin-top: 60px;
 }
 .container {
-  margin: auto;;
+  margin: auto;
+  background-color: lightgoldenrodyellow;
+  border-radius: 15px;
+  padding: 20px;
+}
+.buttons-container{
+  margin: 10px;
+}
+
+.buttons-container>button{
+  margin-right: 5px;
 }
 .bar {
   width: 20px;
@@ -112,16 +123,3 @@ export default {
   margin: 0 5px;
 }
 </style>
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading
