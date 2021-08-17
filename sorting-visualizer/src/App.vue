@@ -1,19 +1,11 @@
 <template>
   <div>
     <h1>Sorting Visualizer</h1>
-<<<<<<< HEAD
-    <div class="buttons-container">
-      <button @click="bubbleSort()">Bubble Sort</button>
-      <button @click="fillArray()">Shuffle</button>
-      <button @click="mergeSort()">Merge Sort</button>
-    </div>
-=======
     <button @click="bubbleSort()">Bubble Sort</button>
     <button @click="insertionSort()">Insertion Sort</button>
     <button @click="selectionSort()">Selection Sort</button>
     <button @click="fillArray()">Shuffle</button>
 
->>>>>>> b9d190cbd2a55c088dc2f33043a4e8ff60276c7c
     <div class="container">
       <div class="bar" v-for="(number,index) in array" :key="index" :style="{height: number[0] + 'px',backgroundColor:number[1]}"></div>
     </div>
@@ -59,13 +51,12 @@ export default {
             this.array[i+1][1] = 'green';
             // sleep - to visualize / see the changes
             await this.sleep(25)
-            
-            this.array[i+1][1] = 'lightseagreen';
-
+            this.array[i+1][1] = 'grey'
             checked = true
           }
         }
       } while(checked)
+      this.paintArray('lightseagreen')
     },
     async insertionSort(){
       for(let i = 1; i < this.size; i++){
@@ -107,10 +98,16 @@ export default {
         this.array[i][1] = 'grey'
         this.array[min][1] = 'grey'
       }
+      this.paintArray('lightseagreen')
     },
     sleep(time) {
       return new Promise((resolve) => setTimeout(resolve, time));
     },
+    paintArray(color){
+      for(var i = 0;i<this.size;i++){
+          this.array[i][1] = color
+      }
+    }
   },
   created() {
     this.fillArray();
