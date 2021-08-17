@@ -37,7 +37,7 @@ export default {
       // populate array with random numbers between 5 and 400
       this.array = [];
       for (let i =0; i< this.size; i++) {
-        this.array.push([this.getRndInteger(5, 400),'lightseagreen'])
+        this.array.push([this.getRndInteger(5, 400),'grey'])
         this.numArray.push(this.array[i][0])
       }
       console.log(this.numArray)
@@ -104,8 +104,8 @@ export default {
         this.array[i][1] = 'red'
         this.array[min][1] = 'green'
         await this.sleep(300)
-        this.array[i][1] = 'lightseagreen'
-        this.array[min][1] = 'lightseagreen'
+        this.array[i][1] = 'grey'
+        this.array[min][1] = 'grey'
       }
     },
     sleep(time) {
