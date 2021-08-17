@@ -1,11 +1,12 @@
 <template>
   <div>
-    <h1>Sorting Visualizer</h1>
-    <button @click="bubbleSort()">Bubble Sort</button>
-    <button @click="insertionSort()">Insertion Sort</button>
-    <button @click="selectionSort()">Selection Sort</button>
-    <button @click="fillArray()">Shuffle</button>
-
+    <h1>Sorting Visualizer:</h1>
+    <div class="buttons-container">
+      <button @click="bubbleSort()">Bubble Sort</button>
+      <button @click="insertionSort()">Insertion Sort</button>
+      <button @click="selectionSort()">Selection Sort</button>
+      <button @click="fillArray()">Shuffle</button>
+    </div>
     <div class="container">
       <div class="bar" v-for="(number,index) in array" :key="index" :style="{height: number[0] + 'px',backgroundColor:number[1]}"></div>
     </div>
@@ -126,9 +127,10 @@ export default {
 }
 .container {
   margin: auto;
-  background-color: lightgoldenrodyellow;
+  background-color: lightsalmon;
   border-radius: 15px;
   padding: 20px;
+  width: 900px;
 }
 .buttons-container{
   margin: 10px;
