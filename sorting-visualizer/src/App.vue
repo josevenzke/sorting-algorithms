@@ -9,20 +9,20 @@
     </div>
     <div class="container">
       <Tabs />
-      <div class="bar-container">
-        <div class="bar" v-for="(number,index) in array" :key="index" :style="{height: number[0] + 'px',backgroundColor:number[1]}"></div>
-      </div>
+      <Bars :numArray="array" :key="array" />
     </div>
   </div>
 </template>
 
 <script>
 import Tabs from './components/Tabs.vue'
+import Bars from './components/Bars.vue'
 
 export default {
   name: 'App',
   components:{
-    Tabs
+    Tabs,
+    Bars
   },
   data() {
     return {
