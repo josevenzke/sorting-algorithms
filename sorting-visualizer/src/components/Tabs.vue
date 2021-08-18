@@ -2,13 +2,13 @@
     <div class="tabs-container">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Bubble Sort</a>
+                <a class="nav-link" @click="activateTab('bubble')" :class="{active: isActive('bubble')}">Bubble Sort</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Insertion Sort</a>
+                <a class="nav-link" @click="activateTab('insertion')" :class="{active: isActive('insertion')}">Insertion Sort</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Selection Sort</a>
+                <a class="nav-link" @click="activateTab('selection')" :class="{active: isActive('selection')}">Selection Sort</a>
             </li>
         </ul>
     </div>
@@ -17,6 +17,25 @@
 <script>
 export default {
     name:'Tabs',
+    data(){
+        return{
+            activeTab: 'bubble'
+        }
+    },
+    methods:{
+        activateTab(tab){
+            this.activeTab = tab
+            console.log(this.activeTab)
+            this.$emit(tab,'sendTab')
+        },
+        isActive(tab){
+            if (tab==this.activeTab){
+                return true
+            }else{
+                return false
+            }
+        }
+    }
 }
 </script>
 
@@ -25,11 +44,16 @@ export default {
     width: 900px;
     margin:auto;
 }
+.nav-link{
+    border: 0px !important;
+    background-color: #d0d1ff !important;
+}
+.nav-link:hover{
+    cursor: pointer;
+}
 .active{
     background-color: #ff8fa3 !important;
     color: #001219 !important;
 }
-.nav-link{
-    border: 0px !important;
-}
+
 </style>
