@@ -8,14 +8,22 @@
       <button @click="fillArray()">Shuffle</button>
     </div>
     <div class="container">
-      <div class="bar" v-for="(number,index) in array" :key="index" :style="{height: number[0] + 'px',backgroundColor:number[1]}"></div>
+      <Tabs />
+      <div class="bar-container">
+        <div class="bar" v-for="(number,index) in array" :key="index" :style="{height: number[0] + 'px',backgroundColor:number[1]}"></div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Tabs from './components/Tabs.vue'
+
 export default {
   name: 'App',
+  components:{
+    Tabs
+  },
   data() {
     return {
       array: [],
@@ -23,11 +31,8 @@ export default {
       size: 40,
     }
   },
-  components: {
-  },
   methods:{
     fillArray(){
-      // populate array with random numbers between 5 and 400
       this.array = [];
       for (let i =0; i< this.size; i++) {
         this.array.push([this.getRndInteger(5, 400),'grey'])
@@ -125,10 +130,10 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-.container {
+.bar-container {
   margin: auto;
-  background-color: lightsalmon;
-  border-radius: 15px;
+  background-color: #ff8fa3;
+  border-radius: 0px 0px 15px 15px;
   padding: 20px;
   width: 900px;
 }
@@ -143,5 +148,10 @@ export default {
   width: 10px;
   display: inline-block;
   margin: 0 5px;
+}
+
+.container{
+  padding: 30px;
+  background-color: #fff0f3;
 }
 </style>
