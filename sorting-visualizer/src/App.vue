@@ -9,20 +9,20 @@
     </div>
     <div class="container">
       <Tabs />
-      <Bars :numArray="array" :key="array" />
+      <BubbleSort />
     </div>
   </div>
 </template>
 
 <script>
 import Tabs from './components/Tabs.vue'
-import Bars from './components/Bars.vue'
+import BubbleSort from './components/SortingAlgs/BubbleSort.vue'
 
 export default {
   name: 'App',
   components:{
     Tabs,
-    Bars
+    BubbleSort
   },
   data() {
     return {
