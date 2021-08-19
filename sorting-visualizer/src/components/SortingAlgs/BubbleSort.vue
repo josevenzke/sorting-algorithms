@@ -1,5 +1,8 @@
 <template>
-    <Bars :numArray="array" :key="array" />
+    <div>
+        <button @click="bubbleSort()">Sort</button>
+        <Bars :numArray="array" :key="array" />
+    </div>
 </template>
 
 <script>
@@ -22,11 +25,31 @@ export default {
             this.array = [];
             for (let i =0; i< this.size; i++) {
                 this.array.push([this.getRndInteger(5, 400),'grey'])
-                this.numArray.push(this.array[i][0])
             }
         },
         getRndInteger(min, max) {
             return Math.floor(Math.random() * (max - min + 1) ) + min;
+        },
+        async bubbleSort(){
+            let len = this.array.length
+            let checked;
+            do {
+                checked = false;
+                for(let i =0;i<len-1;i++){
+                if(this.array[i][0] > this.array[i+1][0]){
+                    let tmp = this.array[i][0];
+                    
+                    this.array[i][0] = this.array[i+1][0];
+                    this.array[i+1][0] = tmp;
+                    this.array[i+1][1] = 'green';
+                    // sleep - to visualize / see the changes
+                    await this.sleep(25)
+                    this.array[i+1][1] = 'grey'
+                    checked = true
+                }
+                }
+            } while(checked)
+            this.paintArray('lightseagreen')
         },
         sleep(time) {
             return new Promise((resolve) => setTimeout(resolve, time));
