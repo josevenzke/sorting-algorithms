@@ -17,6 +17,7 @@
 <script>
 export default {
     name:'Tabs',
+    emits:['changeTab'],
     data(){
         return{
             activeTab: 'bubble'
@@ -25,8 +26,7 @@ export default {
     methods:{
         activateTab(tab){
             this.activeTab = tab
-            console.log(this.activeTab)
-            this.$emit(tab,'sendTab')
+            this.$emit('changeTab',tab)
         },
         isActive(tab){
             if (tab==this.activeTab){
