@@ -19,7 +19,6 @@ export default {
 <style scoped>
 .bar-container {
   margin: auto;
-  background-color: #ff8fa3;
   border-radius: 0px 0px 15px 15px;
   padding: 20px;
   width: 900px;
