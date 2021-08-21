@@ -10,6 +10,9 @@
             <li class="nav-item">
                 <a class="nav-link" @click="activateTab('selection')" :class="{active: isActive('selection')}">Selection Sort</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" @click="activateTab('quick')" :class="{active: isActive('quick')}">Quick Sort</a>
+            </li>
         </ul>
     </div>
 </template>
