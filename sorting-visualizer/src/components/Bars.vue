@@ -24,8 +24,8 @@ export default {
   width: 900px;
 }
 .bar {
-  width: 10px;
+  width: 5px;
   display: inline-block;
-  margin: 0 5px;
+  margin: 0 2px;
 }
 </style>
