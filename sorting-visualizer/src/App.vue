@@ -1,12 +1,7 @@
 <template>
   <div>
     <h1>Sorting Visualizer:</h1>
-    <div class="buttons-container">
-      <button @click="bubbleSort()">Bubble Sort</button>
-      <button @click="insertionSort()">Insertion Sort</button>
-      <button @click="selectionSort()">Selection Sort</button>
-      <button @click="fillArray()">Shuffle</button>
-    </div>
+
     <div class="container">
       <Tabs @changeTab="changeTab" />
       <div class="tab-body" v-if="activeTab=='bubble'">
@@ -18,6 +13,9 @@
       <div class="tab-body" v-if="activeTab=='selection'">
         <SelectionSort />
       </div>
+      <div class="tab-body" v-if="activeTab=='quick'">
+        <QuickSort />
+      </div>
     </div>
   </div>
 </template>
@@ -27,6 +25,7 @@ import Tabs from './components/Tabs.vue'
 import BubbleSort from './components/SortingAlgs/BubbleSort.vue'
 import InsertionSort from './components/SortingAlgs/InsertionSort.vue'
 import SelectionSort from './components/SortingAlgs/SelectionSort.vue'
+import QuickSort from './components/SortingAlgs/QuickSort.vue'
 
 export default {
   name: 'App',
@@ -34,7 +33,8 @@ export default {
     Tabs,
     BubbleSort,
     InsertionSort,
-    SelectionSort
+    SelectionSort,
+    QuickSort,
   },
   data() {
     return {
