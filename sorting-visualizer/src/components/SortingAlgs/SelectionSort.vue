@@ -18,7 +18,7 @@ export default {
     data(){
         return{
             array: [],
-            size: 40,
+            size: 90,
         }
     },
     mounted() {
@@ -37,12 +37,12 @@ export default {
                 var tmp = this.array[i][0];
                 this.array[i][1] = 'green'
                 this.array[min][1] = 'red'
-                await this.sleep(150)
+                await this.sleep(100)
                 this.array[i][0] = this.array[min][0];
                 this.array[min][0] = tmp;
                 this.array[i][1] = 'red'
                 this.array[min][1] = 'green'
-                await this.sleep(150)
+                await this.sleep(100)
                 this.array[i][1] = 'grey'
                 this.array[min][1] = 'grey'
                 this.array[i][1] = 'lightseagreen'

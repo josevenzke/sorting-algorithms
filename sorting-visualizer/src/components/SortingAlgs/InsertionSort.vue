@@ -18,7 +18,7 @@ export default {
     data(){
         return{
             array: [],
-            size: 40,
+            size: 90,
         }
     },
     mounted() {
@@ -34,7 +34,7 @@ export default {
                 while(j >= 0 && this.array[j][0] > key){
                 this.array[j+1][1] = 'green'
                 this.array[j][1] = 'green'
-                await this.sleep(10)
+                await this.sleep(5)
                 this.array[j + 1][0] = this.array[j][0];
                 this.array[j+1][1] = 'lightseagreen'
                 this.array[j][1] = 'lightseagreen'

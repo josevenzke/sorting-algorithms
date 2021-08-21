@@ -18,10 +18,10 @@ export default {
     data(){
         return{
             array: [],
-            size: 40,
+            size: 90,
         }
     },
-    mounted() {
+    created() {
         this.fillArray();
     },
     methods:{
@@ -39,7 +39,7 @@ export default {
                         this.array[i+1][0] = tmp;
                         this.array[i+1][1] = 'green';
                         // sleep - to visualize / see the changes
-                        await this.sleep(25)
+                        await this.sleep(5)
                         this.array[i+1][1] = 'grey'
                         checked = true
                         
