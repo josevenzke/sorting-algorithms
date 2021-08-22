@@ -13,6 +13,9 @@
             <li class="nav-item">
                 <a class="nav-link" @click="activateTab('quick')" :class="{active: isActive('quick')}">Quick Sort</a>
             </li>
+                        <li class="nav-item">
+                <a class="nav-link" @click="activateTab('merge')" :class="{active: isActive('merge')}">Merge Sort</a>
+            </li>
         </ul>
     </div>
 </template>
