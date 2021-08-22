@@ -28,8 +28,6 @@ export default {
             this.sortedArray.push(this.array[i][0])
         }
         this.sortedArray = this.sortedArray.sort(function(a, b) {return a - b;})
-        console.log(this.sortedArray)
-        console.log(this.array)
     },
     methods:{
         async quickSortWrap(arr,start,end){
