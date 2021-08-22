@@ -16,6 +16,9 @@
       <div class="tab-body" v-if="activeTab=='quick'">
         <QuickSort />
       </div>
+      <div class="tab-body" v-if="activeTab=='merge'">
+        <MergeSort />
+      </div>
     </div>
   </div>
 </template>
@@ -26,6 +29,7 @@ import BubbleSort from './components/SortingAlgs/BubbleSort.vue'
 import InsertionSort from './components/SortingAlgs/InsertionSort.vue'
 import SelectionSort from './components/SortingAlgs/SelectionSort.vue'
 import QuickSort from './components/SortingAlgs/QuickSort.vue'
+import MergeSort from './components/SortingAlgs/MergeSort.vue'
 
 export default {
   name: 'App',
@@ -35,6 +39,7 @@ export default {
     InsertionSort,
     SelectionSort,
     QuickSort,
+    MergeSort,
   },
   data() {
     return {
