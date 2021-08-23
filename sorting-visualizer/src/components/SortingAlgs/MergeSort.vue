@@ -1,19 +1,20 @@
 <template>
     <div>
-        <button @click="sort()">Sort</button>
+        <AlgButtons @sort="mergeSort(array)" @shuffle="fillArray()" />
         <Bars :numArray="array" :key="array"/>
-        {{ array }}
     </div>
 </template>
 
 <script>
 import Bars from '../Bars.vue'
+import AlgButtons from '../AlgButtons.vue'
 import arrayMixin from '../../mixins/arrayMixin'
 
 export default {
     name:'MergeSort',
     components:{
-        Bars
+        Bars,
+        AlgButtons
     },
     mixins: [arrayMixin],
     data(){
@@ -26,9 +27,6 @@ export default {
         this.fillArray()
     },
     methods:{
-        async sort(){
-            this.array = await this.mergeSort(this.array)
-        },
         async mergeSort(arr) {
             const half = arr.length / 2;
             // the base case is array length <=1
@@ -37,8 +35,10 @@ export default {
             }
             const left = arr.splice(0, half); // the first half of the array
             const right = arr;
-            await this.sleep(100)
-            return await this.merge(await this.mergeSort(left),await this.mergeSort(right));
+            await this.sleep(10)
+            const x = await this.mergeSort(left)
+            const y = await this.mergeSort(right)
+            return await this.merge(x,y);
 
         },
         async merge(left, right) {

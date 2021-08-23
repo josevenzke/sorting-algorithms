@@ -1,18 +1,20 @@
 <template>
     <div>
-        <button @click="quickSortWrap(array,0,array.length-1)">Sort</button>
+        <AlgButtons @sort="quickSortWrap()" @shuffle="fillArray()" />
         <Bars :numArray="array" :key="array"/>
     </div>
 </template>
 
 <script>
 import Bars from '../Bars.vue'
+import AlgButtons from '../AlgButtons.vue'
 import arrayMixin from '../../mixins/arrayMixin'
 
 export default {
     name:'QuickSort',
     components:{
-        Bars
+        Bars,
+        AlgButtons
     },
     mixins: [arrayMixin],
     data(){
@@ -30,8 +32,8 @@ export default {
         this.sortedArray = this.sortedArray.sort(function(a, b) {return a - b;})
     },
     methods:{
-        async quickSortWrap(arr,start,end){
-            await this.quickSort(arr,start,end)
+        async quickSortWrap(){
+            await this.quickSort(this.array,0,this.array.length-1)
             this.paintArray('lightseagreen')
         },
         async quickSort(arr,start,end) {

@@ -1,18 +1,20 @@
 <template>
     <div>
-        <button @click="bubbleSort()">Sort</button>
+        <AlgButtons @sort="bubbleSort()" @shuffle="fillArray()" />
         <Bars :numArray="array" :key="array"/>
     </div>
 </template>
 
 <script>
 import Bars from '../Bars.vue'
+import AlgButtons from '../AlgButtons.vue'
 import arrayMixin from '../../mixins/arrayMixin'
 
 export default {
     name:'BubbleSort',
     components:{
-        Bars
+        Bars,
+        AlgButtons
     },
     mixins: [arrayMixin],
     data(){
