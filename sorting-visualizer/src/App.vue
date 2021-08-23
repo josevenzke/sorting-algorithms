@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <h1>Sorting Visualizer:</h1>
-
-    <div class="container">
+  <div class="container">
       <Tabs @changeTab="changeTab" />
       <div class="tab-body" v-if="activeTab=='bubble'">
         <BubbleSort />
@@ -19,7 +16,6 @@
       <div class="tab-body" v-if="activeTab=='merge'">
         <MergeSort />
       </div>
-    </div>
   </div>
 </template>
 
@@ -58,8 +54,10 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -67,26 +65,17 @@ export default {
   margin-top: 60px;
 }
 
-.buttons-container{
-  margin: 10px;
-}
-
-.buttons-container>button{
-  margin-right: 5px;
-}
-.bar {
-  width: 10px;
-  display: inline-block;
-  margin: 0 5px;
+body{
+  background-color: #7bab95;
 }
 
 .container{
-  padding: 30px;
-  background-color: #fff0f3;
+  margin-top:150px
 }
 .tab-body{
-  background-color: #ff8fa3;
-  width:900px;
-  margin: 0px 90px 0px 90px;
+  background-color: #141414;
+  width:830px;
+  margin: auto;
+  border-radius: 5px;
 }
 </style>
