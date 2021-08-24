@@ -66,7 +66,8 @@ export default {
 }
 
 body{
-  background-color: #7bab95;
+  background: rgb(51,193,105);
+  background: radial-gradient(circle, rgba(51,193,105,1) 40%, rgba(7,141,96,1) 78%);
 }
 
 .container{
