@@ -23,8 +23,8 @@ export default {
 
 }
 .bar {
-  width: 5px;
+  width: 2px;
   display: inline-block;
-  margin: 0 2px;
+  margin: 0 1px;
 }
 </style>
