@@ -1,6 +1,6 @@
 <template>
     <div>
-        <AlgButtons @sort="insertionSort()" @shuffle="fillArray()" />
+        <AlgButtons @sort="insertionSort()" @shuffle="shuffle(array)" />
         <Bars :numArray="array" :key="array"/>
     </div>
 </template>
@@ -20,11 +20,12 @@ export default {
     data(){
         return{
             array: [],
-            size: 90,
+
         }
     },
     mounted() {
         this.fillArray();
+        this.shuffle(this.array)
     },
     methods:{
         async insertionSort(){
@@ -36,7 +37,7 @@ export default {
                 while(j >= 0 && this.array[j][0] > key){
                 this.array[j+1][1] = 'green'
                 this.array[j][1] = 'green'
-                await this.sleep(5)
+                await this.sleep(1)
                 this.array[j + 1][0] = this.array[j][0];
                 this.array[j+1][1] = 'lightseagreen'
                 this.array[j][1] = 'lightseagreen'

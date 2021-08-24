@@ -1,6 +1,6 @@
 <template>
     <div>
-        <AlgButtons @sort="bubbleSort()" @shuffle="fillArray()" />
+        <AlgButtons @sort="bubbleSort()" @shuffle="shuffle(array)" />
         <Bars :numArray="array" :key="array"/>
     </div>
 </template>
@@ -16,15 +16,16 @@ export default {
         Bars,
         AlgButtons
     },
+    emits:['reset'],
     mixins: [arrayMixin],
     data(){
         return{
             array: [],
-            size: 90,
         }
     },
     created() {
         this.fillArray();
+        this.shuffle(this.array)
     },
     methods:{
         async bubbleSort(){
@@ -41,7 +42,7 @@ export default {
                         this.array[i+1][0] = tmp;
                         this.array[i+1][1] = 'green';
                         // sleep - to visualize / see the changes
-                        await this.sleep(5)
+                        await this.sleep(1)
                         this.array[i+1][1] = 'grey'
                         checked = true
                         

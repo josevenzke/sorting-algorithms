@@ -1,6 +1,6 @@
 <template>
     <div>
-        <AlgButtons @sort="quickSortWrap()" @shuffle="fillArray()" />
+        <AlgButtons @sort="quickSortWrap()" @shuffle="shuffle(array)" />
         <Bars :numArray="array" :key="array"/>
     </div>
 </template>
@@ -20,7 +20,6 @@ export default {
     data(){
         return{
             array: [],
-            size: 90,
             sortedArray: []
         }
     },
@@ -30,6 +29,7 @@ export default {
             this.sortedArray.push(this.array[i][0])
         }
         this.sortedArray = this.sortedArray.sort(function(a, b) {return a - b;})
+        this.shuffle(this.array)
     },
     methods:{
         async quickSortWrap(){
@@ -51,7 +51,7 @@ export default {
                     arr[i][1] = 'lightseagreen'
                 }
             }
-            await this.sleep(200);
+            await this.sleep(1000);
         },
         async partition(arr, start, end){
             // Taking the last element as the pivot
@@ -66,14 +66,7 @@ export default {
                 pivotIndex++;
                 }
             }
-            for (let i = start; i < end; i++) {
-                arr[i][1] = 'green'
-            }
-
-            await this.sleep(200);
-            for (let i = start; i < end; i++) {
-                arr[i][1] = 'grey'
-            }
+            await this.sleep(700);
 
             // Putting the pivot value in the middle
             [arr[pivotIndex][0], arr[end][0]] = [arr[end][0], arr[pivotIndex][0]] 

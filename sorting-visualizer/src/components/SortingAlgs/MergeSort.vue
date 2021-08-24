@@ -1,6 +1,6 @@
 <template>
     <div>
-        <AlgButtons @sort="mergeSort(array)" @shuffle="fillArray()" />
+        <AlgButtons @sort="mergeSort(array)" @shuffle="shuffle(array)" />
         <Bars :numArray="array" :key="array"/>
     </div>
 </template>
@@ -20,11 +20,11 @@ export default {
     data(){
         return{
             array: [],
-            size: 90,
         }
     },
     mounted() {
         this.fillArray()
+        this.shuffle(this.array)
     },
     methods:{
         async mergeSort(arr) {
