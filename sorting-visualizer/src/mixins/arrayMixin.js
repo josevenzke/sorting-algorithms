@@ -20,6 +20,10 @@ export default {
           array[j] = x;
       }
       this.paintArray('grey')
+      this.reload = false
+    },
+    stop(){
+      this.reload = true
     },
     getRndInteger(min, max) {
       return Math.floor(Math.random() * (max - min + 1) ) + min;
