@@ -1,26 +1,27 @@
 <template>
     <div>
-        <AlgButtons @sort="selectionSort()" @shuffle="shuffle(array),a+=1" />
+        <Buttons @sort="selectionSort()" @shuffle="shuffle(array)" @stop="stop()" :show="showSort" :key="showSort" />
         <Bars :numArray="array" :key="array"/>
     </div>
 </template>
 
 <script>
-import Bars from '../Bars.vue'
-import AlgButtons from '../AlgButtons.vue'
-import arrayMixin from '../../mixins/arrayMixin'
+import Bars from '../Visual/Bars.vue'
+import Buttons from '../Visual/Buttons.vue'
+import arrayMixin from '../../../mixins/arrayMixin'
 
 export default {
     name:'InsertionSort',
     components:{
         Bars,
-        AlgButtons
+        Buttons
     },
     mixins: [arrayMixin],
     data(){
         return{
             array: [],
-            a: 0
+            reload: false,
+            showSort: true,
         }
     },
     mounted() {
@@ -29,6 +30,7 @@ export default {
     },
     methods:{
         async selectionSort(){
+            this.showSort = false
             for(var i = 0; i < this.size; i++){
                 var min = i; 
                 for(var j = i+1; j < this.size; j++){
@@ -49,8 +51,14 @@ export default {
                 this.array[i][1] = 'grey'
                 this.array[min][1] = 'grey'
                 this.array[i][1] = 'lightseagreen'
+                if(this.reload==true){
+                    this.shuffle(this.array)
+                    this.showSort = true
+                    return
+                }
             }
             this.paintArray('lightseagreen')
+            this.showSort = true
         },
     },
 }

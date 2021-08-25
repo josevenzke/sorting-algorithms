@@ -1,26 +1,27 @@
 <template>
     <div>
-        <AlgButtons @sort="bubbleSort()" @shuffle="shuffle(array)" />
+        <Buttons @sort="bubbleSort()" @shuffle="shuffle(array)" @stop="stop()" :show="showSort" :key="showSort" />
         <Bars :numArray="array" :key="array"/>
     </div>
 </template>
 
 <script>
-import Bars from '../Bars.vue'
-import AlgButtons from '../AlgButtons.vue'
-import arrayMixin from '../../mixins/arrayMixin'
+import Bars from '../Visual/Bars.vue'
+import Buttons from '../Visual/Buttons.vue'
+import arrayMixin from '../../../mixins/arrayMixin'
 
 export default {
     name:'BubbleSort',
     components:{
         Bars,
-        AlgButtons
+        Buttons
     },
-    emits:['reset'],
     mixins: [arrayMixin],
     data(){
         return{
             array: [],
+            reload: false,
+            showSort: true,
         }
     },
     created() {
@@ -29,6 +30,7 @@ export default {
     },
     methods:{
         async bubbleSort(){
+            this.showSort = false
             let len = this.array.length
             var last = this.size-1
             let checked;
@@ -45,13 +47,19 @@ export default {
                         await this.sleep(1)
                         this.array[i+1][1] = 'grey'
                         checked = true
-                        
+                        if(this.reload==true){
+                            this.shuffle(this.array)
+                            this.showSort = true
+                            return
+                        }
                     }
                 }
                 this.array[last][1] = 'lightseagreen'
                 last = last-1
+
             } while(checked)
             this.paintArray('lightseagreen')
+            this.showSort = true
         },
     },
 }

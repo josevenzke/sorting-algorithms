@@ -1,26 +1,28 @@
 <template>
     <div>
-        <AlgButtons @sort="quickSortWrap()" @shuffle="shuffle(array)" />
+        <Buttons @sort="quickSortWrap()" @shuffle="shuffle(array)" @stop="stop()" :show="showSort" :key="showSort" />
         <Bars :numArray="array" :key="array"/>
     </div>
 </template>
 
 <script>
-import Bars from '../Bars.vue'
-import AlgButtons from '../AlgButtons.vue'
-import arrayMixin from '../../mixins/arrayMixin'
+import Bars from '../Visual/Bars.vue'
+import Buttons from '../Visual/Buttons.vue'
+import arrayMixin from '../../../mixins/arrayMixin'
 
 export default {
     name:'QuickSort',
     components:{
         Bars,
-        AlgButtons
+        Buttons
     },
     mixins: [arrayMixin],
     data(){
         return{
             array: [],
-            sortedArray: []
+            sortedArray: [],
+            reload: false,
+            showSort: true,
         }
     },
     created() {
@@ -33,14 +35,20 @@ export default {
     },
     methods:{
         async quickSortWrap(){
+            this.showSort = false
             await this.quickSort(this.array,0,this.array.length-1)
             this.paintArray('lightseagreen')
+            this.showSort = true
         },
         async quickSort(arr,start,end) {
             if (start >= end) {
                 return;
             }
-            
+            if(this.reload==true){
+                    this.shuffle(this.array)
+                    this.showSort = true
+                    throw "exit";
+            }
             // Returns pivotIndex
             let index = await this.partition(arr, start, end);
             
@@ -51,7 +59,6 @@ export default {
                     arr[i][1] = 'lightseagreen'
                 }
             }
-            await this.sleep(1000);
         },
         async partition(arr, start, end){
             // Taking the last element as the pivot

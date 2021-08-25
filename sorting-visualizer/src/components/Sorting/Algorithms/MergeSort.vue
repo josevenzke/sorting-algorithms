@@ -1,20 +1,20 @@
 <template>
     <div>
-        <AlgButtons @sort="mergeSort(array)" @shuffle="shuffle(array)" />
+        <Buttons @sort="mergeSort(array)" @shuffle="shuffle(array)" />
         <Bars :numArray="array" :key="array"/>
     </div>
 </template>
 
 <script>
-import Bars from '../Bars.vue'
-import AlgButtons from '../AlgButtons.vue'
-import arrayMixin from '../../mixins/arrayMixin'
+import Bars from '../Visual/Bars.vue'
+import Buttons from '../Visual/Buttons.vue'
+import arrayMixin from '../../../mixins/arrayMixin'
 
 export default {
     name:'MergeSort',
     components:{
         Bars,
-        AlgButtons
+        Buttons
     },
     mixins: [arrayMixin],
     data(){
