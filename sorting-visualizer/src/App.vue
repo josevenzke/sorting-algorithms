@@ -1,19 +1,19 @@
 <template>
   <div class="container">
       <Tabs @changeTab="changeTab" />
-      <div class="tab-body" v-if="activeTab=='bubble'">
+      <div class="tab-body" :class="{ativo: activeTab=='bubble' }">
         <BubbleSort />
       </div>
-      <div class="tab-body" v-if="activeTab=='insertion'">
+      <div class="tab-body" :class="{ativo: activeTab=='insertion' }">
         <InsertionSort />
       </div>
-      <div class="tab-body" v-if="activeTab=='selection'">
+      <div class="tab-body" :class="{ativo: activeTab=='selection' }">
         <SelectionSort />
       </div>
-      <div class="tab-body" v-if="activeTab=='quick'">
+      <div class="tab-body" :class="{ativo: activeTab=='quick' }">
         <QuickSort />
       </div>
-      <div class="tab-body" v-if="activeTab=='merge'">
+      <div class="tab-body" :class="{ativo: activeTab=='merge' }">
         <MergeSort />
       </div>
   </div>
@@ -21,11 +21,11 @@
 
 <script>
 import Tabs from './components/Tabs.vue'
-import BubbleSort from './components/SortingAlgs/BubbleSort.vue'
-import InsertionSort from './components/SortingAlgs/InsertionSort.vue'
-import SelectionSort from './components/SortingAlgs/SelectionSort.vue'
-import QuickSort from './components/SortingAlgs/QuickSort.vue'
-import MergeSort from './components/SortingAlgs/MergeSort.vue'
+import BubbleSort from './components/Sorting/Algorithms/BubbleSort.vue'
+import InsertionSort from './components/Sorting/Algorithms/InsertionSort.vue'
+import SelectionSort from './components/Sorting/Algorithms/SelectionSort.vue'
+import QuickSort from './components/Sorting/Algorithms/QuickSort.vue'
+import MergeSort from './components/Sorting/Algorithms/MergeSort.vue'
 
 export default {
   name: 'App',
@@ -78,5 +78,10 @@ body{
   width:830px;
   margin: auto;
   border-radius: 5px;
+  display: none;
+}
+
+.ativo{
+  display: block;
 }
 </style>
