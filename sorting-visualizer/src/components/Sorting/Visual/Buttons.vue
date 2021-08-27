@@ -4,7 +4,7 @@
         <button v-else @click="stop()">Stop <i class="fas fa-pause"></i></button>
         <div class="secondary-buttons">
             <button @click="shuffle()" :disabled="!showRun" ><i class="fas fa-sync-alt"></i></button>
-            <button :disabled="!showRun" ><i class="fas fa-info"></i></button>
+            <button @click="info()" :disabled="!showRun" ><i class="fas fa-info"></i></button>
         </div>
     </div>
 </template>
@@ -24,6 +24,9 @@ export default {
         },
         shuffle(){
             this.$emit('shuffle')
+        },
+        info(){
+            this.$emit('info')
         },
         stop(){
             this.$emit('stop')
