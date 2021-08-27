@@ -1,7 +1,10 @@
 <template>
     <div>
-        <Buttons @sort="bubbleSort()" @shuffle="shuffle(array)" @stop="stop()" :show="showSort" :key="showSort" />
+        <Buttons @sort="bubbleSort()" @shuffle="shuffle(array)" @stop="stop()" @info="showInfo()" :show="showSort" :key="showSort" />
         <Bars :numArray="array" :key="array"/>
+        <info-modal v-show="isModalVisible" @close="closeModal()">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio rerum corrupti odit facilis doloribus dolore harum quas sapiente odio, obcaecati cumque incidunt architecto dolorum consequatur. Temporibus illum voluptates a numquam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, dignissimos excepturi aspernatur doloribus necessitatibus, fugiat, dolore nobis animi asperiores modi. Facere, perspiciatis inventore corporis quos ducimus mollitia nulla sapiente?</p>
+        </info-modal>
     </div>
 </template>
 
@@ -9,12 +12,14 @@
 import Bars from '../Visual/Bars.vue'
 import Buttons from '../Visual/Buttons.vue'
 import arrayMixin from '../../../mixins/arrayMixin'
+import InfoModal from '../Visual/InfoModal.vue'
 
 export default {
     name:'BubbleSort',
     components:{
         Bars,
-        Buttons
+        Buttons,
+        InfoModal
     },
     mixins: [arrayMixin],
     data(){
@@ -22,6 +27,7 @@ export default {
             array: [],
             reload: false,
             showSort: true,
+            isModalVisible: false,
         }
     },
     created() {
@@ -61,6 +67,12 @@ export default {
             this.paintArray('lightseagreen')
             this.showSort = true
         },
+        showInfo(){
+            this.isModalVisible = true;
+        },
+        closeModal(){
+            this.isModalVisible = false;
+        }
     },
 }
 </script>
