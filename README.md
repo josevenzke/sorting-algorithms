@@ -36,18 +36,6 @@ Here's some of the stuff you will need to install.
 
 ### Installation
 
-1. Clone the repo
-   ```
-   git clone https://github.com/josevenzke/librario-api.git
-   ```
-2. Create a new user
-   ```
-   python manage.py createsuperuser 
-   ```
-3. Run the project
-   ```
-   python manage.py runserver
-   ```
 1. Project setup
     ```
     npm install
