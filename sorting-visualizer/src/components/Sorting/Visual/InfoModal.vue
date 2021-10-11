@@ -8,7 +8,7 @@
             </section>
 
             <button type="button" class="btn-green" @click="close">
-            Close Modal
+            Close Info
             </button>
             
         </div>
