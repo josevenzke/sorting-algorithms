@@ -3,7 +3,7 @@
         <Buttons @sort="bubbleSort()" @shuffle="shuffle(array)" @stop="stop()" @info="showInfo()" :show="showSort" :key="showSort" />
         <Bars :numArray="array" :key="array"/>
         <info-modal v-show="isModalVisible" @close="closeModal()">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio rerum corrupti odit facilis doloribus dolore harum quas sapiente odio, obcaecati cumque incidunt architecto dolorum consequatur. Temporibus illum voluptates a numquam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, dignissimos excepturi aspernatur doloribus necessitatibus, fugiat, dolore nobis animi asperiores modi. Facere, perspiciatis inventore corporis quos ducimus mollitia nulla sapiente?</p>
+            <p>Bubble sort is one of the fundamental forms of sorting in programming. Bubble sort algorithms move through a sequence of data (typically integers) and rearrange them into ascending or descending order one number at a time. To do this, the algorithm compares number X to the adjacent number Y. If X is higher than Y, the two are swapped and the algorithm starts over.</p>
         </info-modal>
     </div>
 </template>
