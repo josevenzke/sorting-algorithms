@@ -2,8 +2,10 @@ export default {
   data(){
     return{
       size: 200,
+      isModalVisible: false,
     }
   },
+  
   methods: {
     fillArray(){
       this.array = [];
@@ -35,6 +37,12 @@ export default {
       for(var i = 0;i<this.size;i++){
           this.array[i][1] = color
       }
+    },
+    showInfo(){
+      this.isModalVisible = true;
+    },
+    closeModal(){
+        this.isModalVisible = false;
     }
   }
 }
