@@ -3,6 +3,7 @@
         <Buttons @sort="bubbleSort()" @shuffle="shuffle(array)" @stop="stop()" @info="showInfo()" :show="showSort" :key="showSort" />
         <Bars :numArray="array" :key="array"/>
         <info-modal v-show="isModalVisible" @close="closeModal()">
+            <h3>Bubble Sort:</h3>
             <p>Bubble sort is one of the fundamental forms of sorting in programming. Bubble sort algorithms move through a sequence of data (typically integers) and rearrange them into ascending or descending order one number at a time. To do this, the algorithm compares number X to the adjacent number Y. If X is higher than Y, the two are swapped and the algorithm starts over.</p>
         </info-modal>
     </div>
@@ -27,7 +28,6 @@ export default {
             array: [],
             reload: false,
             showSort: true,
-            isModalVisible: false,
         }
     },
     created() {
@@ -67,12 +67,6 @@ export default {
             this.paintArray('lightseagreen')
             this.showSort = true
         },
-        showInfo(){
-            this.isModalVisible = true;
-        },
-        closeModal(){
-            this.isModalVisible = false;
-        }
     },
 }
 </script>

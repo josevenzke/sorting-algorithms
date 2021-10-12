@@ -3,6 +3,7 @@
         <Buttons @sort="insertionSort()" @shuffle="shuffle(array)" @stop="stop()" @info="showInfo()" :show="showSort" :key="showSort" />
         <Bars :numArray="array" :key="array"/>
         <info-modal v-show="isModalVisible" @close="closeModal()">
+            <h3>Insertion Sort:</h3>
             <p>Insertion sort is the sorting mechanism where the sorted array is built having one item at a time. The array elements are compared with each other sequentially and then arranged simultaneously in some particular order. The analogy can be understood from the style we arrange a deck of cards.</p>
         </info-modal>
     </div>
@@ -27,7 +28,6 @@ export default {
             array: [],
             reload: false,
             showSort: true,
-            isModalVisible: false,
 
         }
     },
@@ -64,12 +64,7 @@ export default {
             }
             this.showSort = true
         },
-        showInfo(){
-            this.isModalVisible = true;
-        },
-        closeModal(){
-            this.isModalVisible = false;
-        }
+
     },
 }
 </script>
