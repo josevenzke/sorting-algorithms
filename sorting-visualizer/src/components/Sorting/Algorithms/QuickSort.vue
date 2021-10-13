@@ -1,7 +1,11 @@
 <template>
     <div>
-        <Buttons @sort="quickSortWrap()" @shuffle="shuffle(array)" @stop="stop()" :show="showSort" :key="showSort" />
+        <Buttons @sort="quickSortWrap()" @shuffle="shuffle(array)" @stop="stop()" @info="showInfo()" :show="showSort" :key="showSort" />
         <Bars :numArray="array" :key="array"/>
+        <info-modal v-show="isModalVisible" @close="closeModal()">
+            <h3>Quick Sort:</h3>
+            <p>Quick Sort is a divide and conquer algorithm. It creates two empty arrays to hold elements less than the pivot value and elements greater than the pivot value, and then recursively sort the sub arrays. There are two basic operations in the algorithm, swapping items in place and partitioning a section of the array.</p>
+        </info-modal>
     </div>
 </template>
 
@@ -9,12 +13,14 @@
 import Bars from '../Visual/Bars.vue'
 import Buttons from '../Visual/Buttons.vue'
 import arrayMixin from '../../../mixins/arrayMixin'
+import InfoModal from '../Visual/InfoModal.vue'
 
 export default {
     name:'QuickSort',
     components:{
         Bars,
-        Buttons
+        Buttons,
+        InfoModal
     },
     mixins: [arrayMixin],
     data(){
