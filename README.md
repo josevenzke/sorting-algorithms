@@ -13,7 +13,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Webapp capable of showing visualization of sorting algorithms, even recursive ones.
+Webapp capable of showing visualization of sorting algorithms, even recursive ones!
 
 ### Built With
 
